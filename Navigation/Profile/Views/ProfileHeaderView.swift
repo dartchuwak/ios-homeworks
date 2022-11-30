@@ -26,6 +26,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     let button: UIButton = {
         let button = UIButton()
         button.setTitle("Show status", for: .normal)
+        button.titleLabel?.textAlignment = .center
         button.layer.cornerRadius = 4
         button.backgroundColor = .systemBlue
         button.layer.shadowColor = UIColor.black.cgColor
@@ -85,31 +86,47 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
         
         self.addSubview(headerLabel)
-        headerLabel.frame = CGRect(x: self.center.x, y: self.center.y, width: 0, height: 0)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27).isActive = true
-        headerLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 16).isActive = true
-        headerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
-        
+        let leadingHeader = headerLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 16)
+            leadingHeader.isActive = true
+        leadingHeader.priority = UILayoutPriority(750)
+        let trailngHeader = headerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 16)
+            trailngHeader.isActive = true
+        trailngHeader.priority = UILayoutPriority(749)
+
         self.addSubview(statusLabel)
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 34).isActive = true
-        statusLabel.leadingAnchor.constraint(equalTo:  profileImage.trailingAnchor, constant: 16).isActive = true
-        statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        
+        let leadingLabel = statusLabel.leadingAnchor.constraint(equalTo:  profileImage.trailingAnchor, constant: 16)
+            leadingLabel.isActive = true
+        leadingLabel.priority = UILayoutPriority(rawValue: 750)
+        let trailingLabel = statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            trailingLabel.isActive = true
+        trailingLabel.priority = UILayoutPriority(rawValue: 749)
+
         self.addSubview(statusTextField)
         statusTextField.translatesAutoresizingMaskIntoConstraints = false
         statusTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        statusTextField.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 16).isActive = true
-        statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        let leadingTextFiled = statusTextField.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 16)
+        leadingTextFiled.isActive = true
+        leadingTextFiled.priority = UILayoutPriority(rawValue: 750)
+        let trailingTextField = statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        trailingTextField.isActive = true
+        trailingTextField.priority = UILayoutPriority(rawValue: 749)
         statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16).isActive = true
+        
         
         self.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16).isActive = true
-        button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-        button.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -16).isActive = true
+        let leadingButton = button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+        leadingButton.isActive = true
+        leadingButton.priority = UILayoutPriority(rawValue: 750)
+        let trailingButtton = button.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -16)
+        trailingButtton.isActive = true
+        trailingButtton.priority = UILayoutPriority(rawValue: 749)
         button.addTarget(self, action: #selector (buttonPressed), for: .touchUpInside)
     }
     
