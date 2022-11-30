@@ -14,9 +14,8 @@ class FeedViewController: UIViewController {
     	
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .orange
+        self.view.backgroundColor = .white
         view.addSubview(createButton())
-        self.title = "Feed"
     }
     
     func createButton() -> UIButton {
