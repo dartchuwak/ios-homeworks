@@ -47,10 +47,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A35D319729352F420042D6F3 /* Controllers */ = {
+		A33A91882938B0EE00A5CA57 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A33A918A2938B10D00A5CA57 /* Controllers */,
+				A33A91892938B10300A5CA57 /* Views */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		A33A91892938B10300A5CA57 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A33A918A2938B10D00A5CA57 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				A3C0617D292D0D3C002D6557 /* FeedViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A35D319729352F420042D6F3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				A3815992292D40CC00FB40EB /* InfoViewController.swift */,
 				A3C06181292D106B002D6557 /* PostViewController.swift */,
 				A35D319B293532F20042D6F3 /* MainTabBarController.swift */,
@@ -120,6 +143,7 @@
 				A3D2F8DC292B68E50032BFC4 /* AppDelegate.swift */,
 				A3D2F8DE292B68E50032BFC4 /* SceneDelegate.swift */,
 				A35D3198293532170042D6F3 /* Profile */,
+				A33A91882938B0EE00A5CA57 /* Feed */,
 				A35D319729352F420042D6F3 /* Controllers */,
 				A3C06186292D1B8A002D6557 /* Model */,
 				A3C06183292D10AC002D6557 /* View */,

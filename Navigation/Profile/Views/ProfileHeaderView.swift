@@ -40,7 +40,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     let headerLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
-        label.text = "Hipster Cat"
+        label.text = "Evgenii Mikhailov"
         label.textAlignment = .left
         return label
     }()
@@ -74,6 +74,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .orange
         self.addSubview(profileImage)
         
         self.statusTextField.delegate = self
@@ -114,13 +115,13 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         let trailingTextField = statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         trailingTextField.isActive = true
         trailingTextField.priority = UILayoutPriority(rawValue: 749)
-        statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16).isActive = true
+        statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10).isActive = true
         
         
         self.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16).isActive = true
+        button.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 10).isActive = true
         let leadingButton = button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         leadingButton.isActive = true
         leadingButton.priority = UILayoutPriority(rawValue: 750)
