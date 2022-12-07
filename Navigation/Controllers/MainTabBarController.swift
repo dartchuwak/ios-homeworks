@@ -12,7 +12,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         viewControllers = [
             createNavigationController(viewController: FeedViewController(), title: "Feed", image: "circle"),
-            createNavigationController(viewController: ProfileViewController(), title: "Profile", image: "diamond")
+            createNavigationController(viewController: LogInViewController(), title: "Profile", image: "diamond")
         ]
         
         if #available(iOS 15.0, *) {

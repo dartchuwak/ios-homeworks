@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A33E4C8E293DE3B30079DB38 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E4C8D293DE3B30079DB38 /* LogInViewController.swift */; };
+		A33E4C91293E05FC0079DB38 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E4C90293E05FC0079DB38 /* TextFieldHelpers.swift */; };
 		A35D319A293532300042D6F3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D3199293532300042D6F3 /* ProfileHeaderView.swift */; };
 		A35D319C293532F20042D6F3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D319B293532F20042D6F3 /* MainTabBarController.swift */; };
 		A3815993292D40CC00FB40EB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3815992292D40CC00FB40EB /* InfoViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A33E4C8D293DE3B30079DB38 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		A33E4C90293E05FC0079DB38 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
 		A35D3199293532300042D6F3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		A35D319B293532F20042D6F3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A3815992292D40CC00FB40EB /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A33E4C8F293E05DD0079DB38 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A33E4C90293E05FC0079DB38 /* TextFieldHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A35D319729352F420042D6F3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,17 +74,18 @@
 			isa = PBXGroup;
 			children = (
 				A37F00882936978300318878 /* Views */,
-				A37F00872936977600318878 /* Controlelr */,
+				A37F00872936977600318878 /* Controller */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		A37F00872936977600318878 /* Controlelr */ = {
+		A37F00872936977600318878 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				A3C0617F292D0D48002D6557 /* ProfileViewController.swift */,
+				A33E4C8D293DE3B30079DB38 /* LogInViewController.swift */,
 			);
-			path = Controlelr;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		A37F00882936978300318878 /* Views */ = {
@@ -117,6 +130,7 @@
 		A3D2F8DB292B68E50032BFC4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				A33E4C8F293E05DD0079DB38 /* Helpers */,
 				A3D2F8DC292B68E50032BFC4 /* AppDelegate.swift */,
 				A3D2F8DE292B68E50032BFC4 /* SceneDelegate.swift */,
 				A35D3198293532170042D6F3 /* Profile */,
@@ -207,7 +221,9 @@
 				A3C0617E292D0D3C002D6557 /* FeedViewController.swift in Sources */,
 				A3C06188292D1B97002D6557 /* Post.swift in Sources */,
 				A3815993292D40CC00FB40EB /* InfoViewController.swift in Sources */,
+				A33E4C91293E05FC0079DB38 /* TextFieldHelpers.swift in Sources */,
 				A35D319C293532F20042D6F3 /* MainTabBarController.swift in Sources */,
+				A33E4C8E293DE3B30079DB38 /* LogInViewController.swift in Sources */,
 				A3D2F8DF292B68E50032BFC4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
