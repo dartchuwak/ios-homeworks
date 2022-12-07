@@ -59,12 +59,27 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		A35D319729352F420042D6F3 /* Controllers */ = {
+		A34938FF2940B2C5001F1297 /* FFeed */ = {
+			isa = PBXGroup;
+			children = (
+				A34939002940B30B001F1297 /* Controllers */,
+			);
+			path = FFeed;
+			sourceTree = "<group>";
+		};
+		A34939002940B30B001F1297 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				A3C0617D292D0D3C002D6557 /* FeedViewController.swift */,
 				A3815992292D40CC00FB40EB /* InfoViewController.swift */,
 				A3C06181292D106B002D6557 /* PostViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A35D319729352F420042D6F3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				A35D319B293532F20042D6F3 /* MainTabBarController.swift */,
 			);
 			path = Controllers;
@@ -94,13 +109,6 @@
 				A35D3199293532300042D6F3 /* ProfileHeaderView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		A3C06183292D10AC002D6557 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		A3C06186292D1B8A002D6557 /* Model */ = {
@@ -133,10 +141,10 @@
 				A33E4C8F293E05DD0079DB38 /* Helpers */,
 				A3D2F8DC292B68E50032BFC4 /* AppDelegate.swift */,
 				A3D2F8DE292B68E50032BFC4 /* SceneDelegate.swift */,
+				A34938FF2940B2C5001F1297 /* FFeed */,
 				A35D3198293532170042D6F3 /* Profile */,
 				A35D319729352F420042D6F3 /* Controllers */,
 				A3C06186292D1B8A002D6557 /* Model */,
-				A3C06183292D10AC002D6557 /* View */,
 				A3D2F8E5292B68E50032BFC4 /* Assets.xcassets */,
 				A3D2F8E7292B68E50032BFC4 /* LaunchScreen.storyboard */,
 				A3D2F8EA292B68E50032BFC4 /* Info.plist */,

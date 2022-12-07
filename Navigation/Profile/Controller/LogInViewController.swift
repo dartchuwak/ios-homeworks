@@ -9,13 +9,26 @@ import UIKit
 
 class LogInViewController: UIViewController, UIScrollViewDelegate {
     
-    var scrollView : UIScrollView!
-    var contentView: UIView!
+    let scrollView : UIScrollView = {
+        let sv = UIScrollView(frame: .zero)
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
+    }()
     
-    let logo = UIImageView(image: UIImage(named: "logo"))
+    let contentView: UIView = {
+        let cv = UIView(frame: .zero)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        return cv
+    }()
     
+    let logo: UIImageView = {
+        let logo = UIImageView(image: UIImage(named: "logo"))
+        logo.translatesAutoresizingMaskIntoConstraints = false
+        return logo
+    }()
     let textFieldLogin: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter email"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
@@ -26,6 +39,7 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
     
     let textFieldPassword: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter password"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.keyboardType = .default
@@ -35,6 +49,7 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
     
     let logInButton: UIButton = {
         let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
         let imageNormal = UIImage(named: "blue_pixel")
         button.setTitle("Log in", for: .normal)
         button.setBackgroundImage(imageNormal, for: .normal)
@@ -43,82 +58,80 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
         return button
     }()
     
-    
+    let stackView: UIStackView = {
+        let sv = UIStackView(frame: .zero)
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.axis = .vertical
+        sv.distribution = .fillEqually
+        sv.spacing = 0
+        sv.layer.borderColor = UIColor.lightGray.cgColor
+        sv.layer.cornerRadius = 10
+        sv.clipsToBounds = true
+        sv.layer.borderWidth = 0.5
+        return sv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
-        
-        self.scrollView = UIScrollView(frame: .zero)
-        self.contentView = UIView(frame: .zero)
+       // navigationController?.navigationBar.isHidden = true
         self.scrollView.delegate = self
         self.scrollView.keyboardDismissMode = .interactive
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
+        textFieldLogin.delegate = self
+        textFieldPassword.delegate = self
+        logInButton.addAction(UIAction { _ in self.navigationController?.pushViewController(ProfileViewController(), animated: true)}, for: .touchUpInside)
+        addViews()
+        scrollViewLayout()
+        layoutInsideContentView()
+    }
+    
+    private func addViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        
+        contentView.addSubview(logo)
+        contentView.addSubview(stackView)
+        contentView.addSubview(logInButton)
+        stackView.addArrangedSubview(textFieldLogin)
+        stackView.addArrangedSubview(textFieldPassword)
+    }
+    
+    private func scrollViewLayout() {
         NSLayoutConstraint.activate([
             scrollView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         ])
-        
-        
-        contentView.addSubview(logo)
-        
-        logo.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func layoutInsideContentView() {
         NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 120),
+            stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            stackView.heightAnchor.constraint(equalToConstant: 100),
             logo.widthAnchor.constraint(equalToConstant: 100),
             logo.heightAnchor.constraint(equalToConstant: 100),
             logo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
-            logo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0)
+            logo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0),
+            logInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 120),
+            logInButton.heightAnchor.constraint(equalToConstant: 50),
+            logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            logInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
         ])
-        
-        let verticalStackView = UIStackView(arrangedSubviews: [textFieldLogin, textFieldPassword])
-        verticalStackView.axis = .vertical
-        verticalStackView.distribution = .fillEqually
-        verticalStackView.spacing = 0
-        verticalStackView.layer.borderColor = UIColor.lightGray.cgColor
-        verticalStackView.layer.cornerRadius = 10
-        verticalStackView.clipsToBounds = true
-        verticalStackView.layer.borderWidth = 0.5
-        
-        contentView.addSubview(verticalStackView)
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-        verticalStackView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 120).isActive = true
-        verticalStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
-        verticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        verticalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-        verticalStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        contentView.addSubview(logInButton)
-        logInButton.translatesAutoresizingMaskIntoConstraints = false
-        logInButton.topAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: 120).isActive = true
-        logInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-        logInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        logInButton.addAction(UIAction { _ in self.present(ProfileViewController(), animated: true) }, for: .touchUpInside)
-        
-        textFieldLogin.delegate = self
-        textFieldPassword.delegate = self
-    
     }
     
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         registerKeyboardNotifications()
     }
     
@@ -138,17 +151,11 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
                                                object: nil)
     }
     
-   
-    
-
-    
     @objc func keyboardWillShow(_ notification: NSNotification) {
         guard let ks = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: ks.height - view.safeAreaInsets.bottom + 20, right: 0)
         self.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: ks.height - view.safeAreaInsets.bottom + 20, right: 0)
     }
-    
-
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
         self.scrollView.contentInset = .zero
@@ -156,9 +163,7 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
     }
 }
 
-
 extension LogInViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textFieldLogin.endEditing(true)
         textFieldPassword.endEditing(true)
